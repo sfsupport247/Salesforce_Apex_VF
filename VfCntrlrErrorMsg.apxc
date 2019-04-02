@@ -1,0 +1,39 @@
+/**
+* 
+*/
+public with sharing class VfCntrlrErrorMsg {
+    public Account acc{get;set;}
+    public ErrorMessageInVfController(ApexPages.StandardController controller) {
+        acc = new Account();
+    }
+ 
+    public void save(){
+      if(acc.name == '' || acc.name == null)
+       ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,'Please enter Account name'));
+       
+ 
+      if(acc.phone == '' || acc.phone == null)
+       ApexPages.addmessage(new ApexPages.message(ApexPages.severity.WARNING,'Please enter Account phone'));
+
+ 
+    }
+}
+
+/*
+* Following are the steps to test this example - In the "Developer Console"
+* Step 1- Create above VfCntrlrErrorMsg - Save
+* Step 2- Create VfErrorMsg.vpf - Save and hit Preview button specified on the "Developer Console"
+*
+*<apex:page standardController="Account" extensions="VfCntrlrErrorMsg">
+* <apex:form >
+*   <apex:pageblock >
+*      <apex:pageMessages id="showmsg"></apex:pageMessages>
+*         <apex:panelGrid columns="2">
+*           Account Name: <apex:inputText value="{!acc.name}"/>
+*           Account Phone: <apex:inputText value="{!acc.phone}"/>
+*           <apex:commandButton value="Update" action="{!save}" style="width:100px" rerender="showmsg"/>
+*         </apex:panelGrid>
+*    </apex:pageblock>
+* </apex:form>
+*</apex:page>
+*/
