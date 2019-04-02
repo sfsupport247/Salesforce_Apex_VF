@@ -35,5 +35,5 @@ public with sharing class VfCntrlrErrorMsg {
 *         </apex:panelGrid>
 *    </apex:pageblock>
 * </apex:form>
-*</apex:page>
+*</apex:page> 
 */
